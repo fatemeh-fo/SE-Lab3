@@ -94,4 +94,9 @@ public class UserServiceTest {
     public void removeUserValid__ShouldReturnTrue() {
         assertTrue(userService.removeUser("admin"));
     }
+
+    @Test
+    public void loginWithEmailNotFound__ShouldReturnFalse() {
+        assertFalse(userService.loginWithEmail("user1@mail.com", "pass1"));
+    }
 }
