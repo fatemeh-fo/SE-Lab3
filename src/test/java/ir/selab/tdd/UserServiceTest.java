@@ -69,4 +69,10 @@ public class UserServiceTest {
                              new User("ali", "qwert")), 
                      userService.getAllUsers());
     }
+
+    @Test
+    public void createNewUserWithDupliteEmail__ShouldReturnFalse() {
+        assertTrue(userService.registerUser("user1", "pass1", "user1@mail.com"));
+        assertFalse(userService.registerUser("user2", "pass2", "user1@mail.com"));
+    }
 }
