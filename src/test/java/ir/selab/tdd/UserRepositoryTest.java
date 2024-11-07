@@ -73,4 +73,29 @@ public class UserRepositoryTest {
         assertTrue(repository.addUser(newUser));
         assertEquals(newUser, repository.getUserByEmail("admin2@mail.com"));
     }
+
+    @Test
+    public void usersByEmailsDuplicateEmail__ShouldThrowException() {
+        final List<User> users = List.of(new User("user1", "123", "user1@gmail.com"),
+                                         new User("user2", "1234", "user1@gmail.com"));
+        assertThrows(IllegalArgumentException.class, () -> {
+            new UserRepository(users);
+        });
+    }
+
+    @Test
+    public void usersByEmailsNullEmail__ShouldBeFilteredOut() {
+        final List<User> users = List.of(new User("user1", "123"),
+                                         new User("user2", "1234", "user1@gmail.com"));
+        repository = new UserRepository(users);
+        assertNull(repository.getUserByEmail(null));
+    }
+
+    @Test
+    public void usersByEmailsNullValid__ShouldSucceed() {
+        final List<User> users = List.of(new User("user1", "123"),
+                                         new User("user2", "1234", "user1@gmail.com"));
+        repository = new UserRepository(users);
+        assertNotNull(repository.getUserByEmail("user1@gmail.com"));
+    }
 }
