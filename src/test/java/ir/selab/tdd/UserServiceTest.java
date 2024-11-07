@@ -11,11 +11,12 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class UserServiceTest {
+    private UserRepository userRepository;
     private UserService userService;
 
     @Before
     public void setUp() {
-        UserRepository userRepository = new UserRepository(List.of());
+        userRepository = new UserRepository(List.of());
         userService = new UserService(userRepository);
         userService.registerUser("admin", "1234");
         userService.registerUser("ali", "qwert");
@@ -93,6 +94,15 @@ public class UserServiceTest {
     @Test
     public void removeUserValid__ShouldReturnTrue() {
         assertTrue(userService.removeUser("admin"));
+    }
+
+    @Test
+    public void removeUserValidThatHasEmail__ShouldRemoveTheUserFromUsersByEmailToo() {
+        assertTrue(userService.registerUser("user1", "pass1", "user1@mail.com"));
+
+        assertTrue(userService.removeUser("user1"));
+        assertNull(userRepository.getUserByUsername("user1"));
+        assertNull(userRepository.getUserByEmail("user1@mail.com"));
     }
 
     @Test
