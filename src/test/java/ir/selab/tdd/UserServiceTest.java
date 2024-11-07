@@ -54,4 +54,12 @@ public class UserServiceTest {
         boolean login = userService.loginWithUsername("ahmad", "abcd");
         assertFalse(login);
     }
+    
+    @Test
+    public void getAllUsersInitiallyEmpty_ShouldReturnEmptyList() {
+        UserRepository userRepository = new UserRepository(List.of());
+        userService = new UserService(userRepository);
+
+        assertEquals(List.of(), userService.getAllUsers());
+    }
 }
