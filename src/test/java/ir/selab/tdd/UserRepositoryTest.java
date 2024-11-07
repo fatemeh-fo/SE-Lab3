@@ -66,4 +66,11 @@ public class UserRepositoryTest {
     public void getUserByEmailNotFound__ShouldReturnNull() {
         assertNull(repository.getUserByEmail("user1@mail.com"));
     }
+
+    @Test
+    public void getUserByEmailValid__ShouldReturnCorrectly() {
+        User newUser = new User("admin2", "1234", "admin2@mail.com");
+        assertTrue(repository.addUser(newUser));
+        assertEquals(newUser, repository.getUserByEmail("admin2@mail.com"));
+    }
 }
