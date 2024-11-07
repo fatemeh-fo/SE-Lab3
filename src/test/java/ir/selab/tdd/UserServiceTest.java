@@ -56,10 +56,17 @@ public class UserServiceTest {
     }
     
     @Test
-    public void getAllUsersInitiallyEmpty_ShouldReturnEmptyList() {
+    public void getAllUsersInitiallyEmpty__ShouldReturnEmptyList() {
         UserRepository userRepository = new UserRepository(List.of());
         userService = new UserService(userRepository);
 
         assertEquals(List.of(), userService.getAllUsers());
+    }
+    
+    @Test
+    public void getAllUsersAfterRegister__ShouldReturnCorrectList() {
+        assertEquals(List.of(new User("admin", "1234"), 
+                             new User("ali", "qwert")), 
+                     userService.getAllUsers());
     }
 }
