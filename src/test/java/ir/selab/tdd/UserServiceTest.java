@@ -111,4 +111,11 @@ public class UserServiceTest {
         assertTrue(userService.registerUser("user1", "pass1", "user1@mail.com"));
         assertTrue(userService.loginWithEmail("user1@mail.com", "pass1"));
     }
+
+    @Test
+    public void changeUserEmailDuplicateEmail__ShouldReturnFalse() {
+        assertTrue(userService.registerUser("user1", "pass1", "user1@mail.com"));
+        assertTrue(userService.registerUser("user2", "pass2", "user2@mail.com"));
+        assertFalse(userService.changeUserEmail("user1", "user2@mail.com"));
+    }
 }
