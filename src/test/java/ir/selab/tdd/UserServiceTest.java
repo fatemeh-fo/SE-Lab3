@@ -89,4 +89,9 @@ public class UserServiceTest {
     public void removeUserNotFound__ShouldReturnFalse() {
         assertFalse(userService.removeUser("user1"));
     }
+
+    @Test
+    public void removeUserValid__ShouldReturnTrue() {
+        assertTrue(userService.removeUser("admin"));
+    }
 }
