@@ -56,4 +56,13 @@ public class UserRepository {
     public List<User> getAllUsers() {
         return List.copyOf(usersByUserName.values());
     }
+
+    public boolean changeUserEmail(String username, String newEmail) {
+        User user = getUserByUsername(username);
+        if (user == null) return false;
+        if (getUserByEmail(newEmail) != null) return false;
+        usersByEmail.remove(user.getEmail());
+        usersByEmail.put(newEmail, user);
+        return getUserByEmail(newEmail) != null;
+    }
 }
