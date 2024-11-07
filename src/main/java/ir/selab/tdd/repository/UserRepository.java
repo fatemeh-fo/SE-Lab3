@@ -46,4 +46,8 @@ public class UserRepository {
     public int getUserCount() {
         return usersByUserName.size();
     }
+
+    public List<User> getAllUsers() {
+        return List.copyOf(usersByUserName.values());
+    }
 }

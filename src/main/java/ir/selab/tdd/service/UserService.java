@@ -40,7 +40,7 @@ public class UserService {
     }
 
     public List<User> getAllUsers() {
-        return List.of();
+        return repository.getAllUsers();
     }
 
     public boolean changeUserEmail(String username, String newEmail) {

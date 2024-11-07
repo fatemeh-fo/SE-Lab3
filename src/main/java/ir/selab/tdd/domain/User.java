@@ -13,4 +13,13 @@ public class User {
     private final String username;
     private final String password;
     private String email;
+
+    @Override
+    public boolean equals(Object other) {
+        if (other.getClass() != getClass()) 
+            return false;
+        return username == ((User) other).username && 
+                password == ((User) other).password && 
+                email == ((User) other).email;
+    }
 }
