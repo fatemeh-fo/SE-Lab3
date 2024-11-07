@@ -15,8 +15,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  maven:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,11 +26,12 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Maven Clean
-      run: mvn clean -f pom.xml
-    - name: Maven Validate
-      run: mvn validate -f pom.xml
-    - name: Maven Compile
-      run: mvn compile -f pom.xml
-    - name: Maven Test
-      run: mvn test -f pom.xml
+    - name: Maven Compile, Test, and Report Code Coverage
+      run: mvn clean validate compile jacoco:prepare-agent test install jacoco:report -f pom.xml
+    - name: Deploy Code Coverage Reports
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./target/site/jacoco
+        publish_branch: code-coverage
+
