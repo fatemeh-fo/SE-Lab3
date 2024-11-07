@@ -86,8 +86,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void createNewUserWithValidEmail__ShouldSucceed() {
-        assertTrue(userService.registerUser("user1", "pass1", "user1@mail.com"));
-        assertTrue(userService.registerUser("user2", "pass2", "user2@mail.com"));
+    public void removeUserNotFound__ShouldReturnFalse() {
+        assertFalse(userService.removeUser("user1"));
     }
 }
