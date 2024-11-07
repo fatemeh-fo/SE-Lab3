@@ -61,4 +61,9 @@ public class UserRepositoryTest {
         // Then
         assertEquals(oldUserCount + 1, repository.getUserCount());
     }
+
+    @Test
+    public void getUserByEmailNotFound__ShouldReturnNull() {
+        assertNull(repository.getUserByEmail("user1@mail.com"));
+    }
 }
