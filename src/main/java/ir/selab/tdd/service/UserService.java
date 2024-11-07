@@ -40,8 +40,7 @@ public class UserService {
     }
 
     public List<User> getAllUsers() {
-        // TODO: implement
-        return null;
+        return List.of();
     }
 
     public boolean changeUserEmail(String username, String newEmail) {
