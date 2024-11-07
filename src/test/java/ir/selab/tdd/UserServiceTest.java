@@ -123,4 +123,11 @@ public class UserServiceTest {
     public void changeUserEmailNotFound__ShouldReturnFalse() {
         assertFalse(userService.changeUserEmail("user1", "user2@mail.com"));
     }
+
+    @Test
+    public void changeUserEmailValid__ShouldReturnTrue() {
+        assertTrue(userService.registerUser("user1", "pass1", "user1@mail.com"));
+        assertTrue(userService.registerUser("user2", "pass2", "user2@mail.com"));
+        assertTrue(userService.changeUserEmail("user1", "user3@mail.com"));
+    }
 }
