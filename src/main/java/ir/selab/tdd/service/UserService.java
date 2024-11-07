@@ -18,9 +18,11 @@ public class UserService {
         return userByUsername.getPassword().equals(password);
     }
 
-    public boolean loginWithEmail(String username, String password) {
-        // TODO: implement login with email. return true if username and password are valid.
-        return false;
+    public boolean loginWithEmail(String email, String password) {
+        final User user = repository.getUserByEmail(email);
+        if (user == null) return false;
+        if (user.getPassword() != password) return false;
+        return true;
     }
 
     public boolean registerUser(String username, String password) {

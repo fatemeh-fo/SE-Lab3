@@ -105,4 +105,10 @@ public class UserServiceTest {
         assertTrue(userService.registerUser("user1", "pass1", "user1@mail.com"));
         assertFalse(userService.loginWithEmail("user1@mail.com", "pass2"));
     }
+
+    @Test
+    public void loginWithEmailValid__ShouldReturnTrue() {
+        assertTrue(userService.registerUser("user1", "pass1", "user1@mail.com"));
+        assertTrue(userService.loginWithEmail("user1@mail.com", "pass1"));
+    }
 }
