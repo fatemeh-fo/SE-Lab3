@@ -153,4 +153,13 @@ public class UserServiceTest {
         assertTrue(userService.changeUserEmail("user1", "user1@mail.com"));
         assertTrue(userService.loginWithEmail("user1@mail.com", "pass1"));
     }
+
+    @Test
+    public void emailChangeForUserWithEmailToNull__ShouldSucceed() {
+        assertTrue(userService.registerUser("user1", "pass1", "user1@mail.com"));
+        assertTrue(userService.changeUserEmail("user1", null));
+        assertFalse(userService.loginWithEmail("user1@mail.com", "pass1"));
+        assertTrue(userService.loginWithUsername("user1", "pass1"));
+        assertNull(userRepository.getUserByEmail(null));
+    }
 }
