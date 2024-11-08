@@ -69,7 +69,8 @@ public class UserRepository {
         if (user == null) return false;
         if (getUserByEmail(newEmail) != null) return false;
         usersByEmail.remove(user.getEmail());
-        usersByEmail.put(newEmail, user);
-        return getUserByEmail(newEmail) != null;
+        if (newEmail != null)
+            usersByEmail.put(newEmail, user);
+        return true;
     }
 }
