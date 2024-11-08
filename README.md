@@ -21,11 +21,9 @@
     - هر گاه یک ایشو یا pull request بسته یا merge میشد، آیتم آن به done برده میشد.
 - علاوه بر این برای هر یک از آیتم‌ها، ایشو میساختیم و برنچ development آن را با نام مناسب حاوی شماره ایشو و عنوان آن میساختیم و پس از از push به remote و ساخت pull request یک کامنت fixes #issue_number اضافه میکردیم و اینگونه فرایند بسته شدن ایشو را به مرج شدن pull request وابسته میکردیم.
 
-# تست‌های UserService
+[پول‌ریکوئست‌های مرج شده](https://github.com/fatemeh-fo/SE-Lab3/pulls?q=is%3Apr+is%3Amerged)
 
-ن
-
-# تست‌های UserRepository
+[تخته کانبان](https://github.com/users/fatemeh-fo/projects/6/views/1)
 
 # گزارش Code Coverage در ابتدا
 ![coverage before](<images/Screenshot 1403-08-18 at 12.14.08.png>)
